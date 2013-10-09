@@ -5,20 +5,20 @@
  */
 
 import org.junit.* ;
+
 import static org.junit.Assert.* ;
 
 public class TemperatureTest {
 
-  // Add multiple tests to check all functions of
-  // {@Code Temperature} class.
-
-  // @Test
-  // public void .... (){
-  //    ...
-  // }
-
-  // @Test
-  // public void .... (){
-  //    ...
-  // }
+	@Test
+	public void testGetUnits() {
+		Temperature celciusTemp    = new Temperature(0, Temperature.Units.CELSIUS);
+		Temperature fahrenheitTemp = new Temperature(0, Temperature.Units.FAHRENHEIT);
+		Temperature kelvinTemp     = new Temperature(0, Temperature.Units.KELVIN);
+	   
+		// Check if the right units are returned
+		assertSame("Units should be Celcius",    Temperature.Units.CELSIUS,    celciusTemp.getUnits());
+		assertSame("Units should be Fahrenheit", Temperature.Units.FAHRENHEIT, fahrenheitTemp.getUnits());
+		assertSame("Units should be Kelvin",     Temperature.Units.KELVIN,     kelvinTemp.getUnits());
+	 } 
 }
