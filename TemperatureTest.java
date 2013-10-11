@@ -93,9 +93,11 @@ public class TemperatureTest {
 		 * works correctly. For each scale, it checks if the conversion returns the 
 		 * correct value for:
 		 *     1) The minimum temperature
+		 *     2) A low temperature (100°C)
 		 */
 		
 		Temperature minimumTemperature;
+		Temperature lowTemperature;
 		
 		/*
 		 * Celsius
@@ -104,14 +106,24 @@ public class TemperatureTest {
 		// Celsius -> Fahrenheit
 		
 		minimumTemperature = new Temperature(-273.15, Temperature.Units.CELSIUS);
+		lowTemperature     = new Temperature(    100, Temperature.Units.CELSIUS);
+		
 		minimumTemperature.changeUnits(Temperature.Units.FAHRENHEIT);
+		lowTemperature.changeUnits(Temperature.Units.FAHRENHEIT);
+		
 		assertEquals("Conversion of minimum temperature from Celsius to Fahrenheit failed", -459.67, minimumTemperature.getValue(), threshold);
+		assertEquals("Conversion of low temperature from Celsius to Fahrenheit failed", 212, lowTemperature.getValue(), threshold);
 		
 		// Celsius -> Kelvin
 		
 		minimumTemperature = new Temperature(-273.15, Temperature.Units.CELSIUS);
+		lowTemperature     = new Temperature(    100, Temperature.Units.CELSIUS);
+		
 		minimumTemperature.changeUnits(Temperature.Units.KELVIN);
+		lowTemperature.changeUnits(Temperature.Units.KELVIN);
+		
 		assertEquals("Conversion of minimum temperature from Celsius to Kelvin failed", 0, minimumTemperature.getValue(), threshold);
+		assertEquals("Conversion of low temperature from Celsius to Kelvin failed", 373.15, lowTemperature.getValue(), threshold);
 		
 		/*
 		 * Fahrenheit
@@ -120,14 +132,24 @@ public class TemperatureTest {
 		// Fahrenheit -> Celsius
 		
 		minimumTemperature = new Temperature(-459.67, Temperature.Units.FAHRENHEIT);
+		lowTemperature     = new Temperature(    212, Temperature.Units.FAHRENHEIT);
+		
 		minimumTemperature.changeUnits(Temperature.Units.CELSIUS);
+		lowTemperature.changeUnits(Temperature.Units.CELSIUS);
+		
 		assertEquals("Conversion of minimum temperature from Fahrenheit to Celsius failed", -273.15, minimumTemperature.getValue(), threshold);
+		assertEquals("Conversion of low temperature from Fahrenheit to Celsius failed", 100, lowTemperature.getValue(), threshold);
 		
 		// Fahrenheit -> Kelvin
 		
 		minimumTemperature = new Temperature(-459.67, Temperature.Units.FAHRENHEIT);
+		lowTemperature     = new Temperature(    212, Temperature.Units.FAHRENHEIT);
+		
 		minimumTemperature.changeUnits(Temperature.Units.KELVIN);
+		lowTemperature.changeUnits(Temperature.Units.KELVIN);
+		
 		assertEquals("Conversion of minimum temperature from Fahrenheit to Kelvin failed", 0, minimumTemperature.getValue(), threshold);
+		assertEquals("Conversion of low temperature from Fahrenheit to Kelvin failed", 373.15, lowTemperature.getValue(), threshold);
 		
 		/*
 		 * Kelvin
@@ -135,15 +157,25 @@ public class TemperatureTest {
 		
 		// Kelvin -> Celsius
 		
-		minimumTemperature = new Temperature(0, Temperature.Units.KELVIN);
+		minimumTemperature = new Temperature(0,      Temperature.Units.KELVIN);
+		lowTemperature     = new Temperature(373.15, Temperature.Units.KELVIN);
+		
 		minimumTemperature.changeUnits(Temperature.Units.CELSIUS);
+		lowTemperature.changeUnits(Temperature.Units.CELSIUS);
+		
 		assertEquals("Conversion of minimum temperature from Kelvin to Celsius failed", -273.15, minimumTemperature.getValue(), threshold);
+		assertEquals("Conversion of low temperature from Kelvin to Celsius failed", 100, lowTemperature.getValue(), threshold);
 		
 		// Kelvin -> Fahrenheit
 		
 		minimumTemperature = new Temperature(0, Temperature.Units.KELVIN);
+		lowTemperature     = new Temperature(373.15, Temperature.Units.KELVIN);
+		
 		minimumTemperature.changeUnits(Temperature.Units.FAHRENHEIT);
+		lowTemperature.changeUnits(Temperature.Units.FAHRENHEIT);
+		
 		assertEquals("Conversion of minimum temperature from Kelvin to Fahrenheit failed", -459.67, minimumTemperature.getValue(), threshold);
+		assertEquals("Conversion of low temperature from Kelvin to Fahrenheit failed", 212, lowTemperature.getValue(), threshold);
 	}
 	
 	/**
